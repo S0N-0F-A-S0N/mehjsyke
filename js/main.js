@@ -37,6 +37,7 @@ var App = function(makehuman, dat, _, THREE, Detector, Nanobar, Stats) {
 
         this.resources = resources
         this.modeling_sliders = modeling_sliders
+        this.boundAnimate = this.animate.bind(this);
     }
 
     App.prototype.init = function init() {
@@ -169,7 +170,7 @@ var App = function(makehuman, dat, _, THREE, Detector, Nanobar, Stats) {
     // everything to update
     App.prototype.animate = function() {
 
-        requestAnimationFrame(this.animate.bind(this));
+        requestAnimationFrame(this.boundAnimate); // ⚡ Bolt: Cache bound function to prevent GC pauses
 
         this.controls.update();
 
